@@ -28,13 +28,13 @@ export const services: Service[] = [
     id: 'back-end',
     title: 'Back end',
     summary: 'APIs and services with validation, auth and clear errors.',
-    includes: ['Node.js', 'Express', 'Prisma', 'REST APIs', 'FastAPI', 'Spring Boot'],
+    includes: ['Node.js', 'Express', 'Fastify', 'Prisma', 'REST APIs', 'FastAPI', 'Spring Boot'],
   },
   {
     id: 'data-hosting',
     title: 'Data & hosting',
     summary: 'Databases, caching and deployments that stay up.',
-    includes: ['PostgreSQL', 'Redis', 'Supabase', 'MySQL', 'Git', 'Vercel', 'Netlify', 'Render', 'Cloudflare Workers'],
+    includes: ['PostgreSQL', 'Redis', 'Supabase', 'MySQL', 'Git', 'Vercel', 'Netlify', 'Render', 'Railway', 'Cloudflare Workers'],
   },
   {
     id: 'ai-data',

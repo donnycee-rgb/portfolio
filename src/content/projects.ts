@@ -35,9 +35,9 @@ export const projects: Project[] = [
     categoryId: 'product',
     summary: 'A wellness tracking app with about 30 real users.',
     overview:
-      'A wellness app that brings activity, food, screen time, focus, mood and eco habits together into one daily LifePulse Score. I designed and built the whole thing and run it in production on Netlify and Render — including fixing real deployment issues: failing database migrations, missing build files and server cold starts.',
+      'A wellness app that brings activity, food, screen time, focus, mood and eco habits together into one daily LifePulse Score. I designed and built the whole thing and run it in production on Netlify and Railway — including fixing real deployment issues: failing database migrations, missing build files and server cold starts.',
     role: ['Product design', 'Full-stack build', 'Deployment & operations'],
-    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Redis', 'Netlify', 'Render'],
+    stack: ['React', 'TypeScript', 'Vite', 'Fastify', 'Prisma', 'PostgreSQL', 'Redis', 'BullMQ', 'Netlify', 'Railway'],
     image: shot('livorapulse.webp'),
     stills: [shot('livorapulse-mobile.webp')],
     year: '2025 – now',
@@ -59,11 +59,17 @@ export const projects: Project[] = [
       'A multi-tenant platform for a social media manager. I implemented role-based access control across the stack — API middleware plus a custom usePermission() React hook that hides actions a user isn’t allowed to take — and built workspace creation, a team invite flow with signed single-use links, and a media upload pipeline that can switch storage providers without code changes.',
     role: ['Full-stack build', 'Access control', 'Upload pipeline'],
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Redis'],
-    image: shot('nexus.svg'),
-    stills: [],
+    image: shot('nexus.webp'),
+    stills: [shot('nexus-mobile.webp')],
     year: '2026',
     featured: true,
-    private: true,
+    links: {
+      live: 'https://nexus-omega-khaki-33.vercel.app',
+      github: [
+        { label: 'Front end', url: 'https://github.com/donnycee-rgb/nexus' },
+        { label: 'Back end', url: 'https://github.com/donnycee-rgb/nexusbackend' },
+      ],
+    },
   },
   {
     slug: 'jkuat-french-club',
