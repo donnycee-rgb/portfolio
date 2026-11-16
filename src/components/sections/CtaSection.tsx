@@ -138,7 +138,7 @@ export function CtaSection() {
               >
                 {cta.primary.label}
               </a>
-              <a href={`mailto:${site.email}`} className="whitespace-nowrap font-semibold text-white underline-offset-4 hover:text-brand hover:underline">
+              <a href={`mailto:${site.email}`} className="whitespace-nowrap font-semibold text-white underline-offset-4 max-md:inline-block max-md:py-3 hover:text-brand hover:underline">
                 {site.email}
               </a>
             </div>

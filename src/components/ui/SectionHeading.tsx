@@ -25,7 +25,7 @@ export function SectionHeading({ eyebrow, title, mark, body, link, onDark = fals
       {link && (
         <Link
           to={link.to}
-          className={`group mt-6 inline-flex items-center gap-2 text-sm font-semibold ${
+          className={`group mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold ${
             onDark ? 'text-white hover:text-brand' : 'text-ink hover:text-brand-dark'
           }`}
         >

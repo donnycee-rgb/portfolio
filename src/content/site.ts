@@ -37,6 +37,9 @@ export const footer = {
   wordmark: 'DENNIS CIRA',
 };
 
+/** The first-visit intro (components/layout/IntroCurtain) */
+export const intro = { skip: 'Click anywhere to skip' };
+
 /** Labels shown in the viewfinder cursor over project imagery (desktop). */
 export const cursorLabels = {
   view: 'View',
@@ -49,6 +52,14 @@ export const navigation: NavItem[] = [
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
+];
+
+/** Phones' bottom dock (components/layout/MobileDock), in display order */
+export const dock = [
+  { label: 'Home', to: '/', icon: 'home' },
+  { label: 'Work', to: '/work', icon: 'work' },
+  { label: 'About', to: '/about', icon: 'about' },
+  { label: 'Contact', to: '/contact', icon: 'contact' },
 ];
 
 /** The header's call-to-action button */

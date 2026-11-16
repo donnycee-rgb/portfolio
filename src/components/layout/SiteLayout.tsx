@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { IntroCurtain } from './IntroCurtain';
 import { ViewfinderCursor } from './ViewfinderCursor';
+import { MobileDock } from './MobileDock';
 
 /** Shell shared by every page: header, page content, footer. */
 export function SiteLayout() {
@@ -34,6 +35,7 @@ export function SiteLayout() {
         <Outlet />
       </main>
       <Footer />
+      <MobileDock />
     </div>
   );
 }

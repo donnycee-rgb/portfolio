@@ -66,7 +66,7 @@ export function ServicesFocus() {
                       onMouseEnter={() => setActive(i)}
                       onFocus={() => setActive(i)}
                       onClick={() => setActive(i)}
-                      className="w-full py-1.5 text-left font-display text-xl leading-tight outline-none sm:py-2 lg:whitespace-nowrap transition-[filter,opacity,transform] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] focus-visible:underline focus-visible:decoration-brand focus-visible:underline-offset-8 sm:text-3xl xl:text-4xl"
+                      className="w-full py-2.5 text-left font-display text-xl leading-tight outline-none sm:py-2 lg:whitespace-nowrap transition-[filter,opacity,transform] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] focus-visible:underline focus-visible:decoration-brand focus-visible:underline-offset-8 sm:text-3xl xl:text-4xl"
                       style={{
                         filter: sharp ? 'blur(0px)' : 'blur(3.5px)',
                         opacity: sharp ? 1 : 0.4,

@@ -194,7 +194,7 @@ export function LightTable() {
                 type="button"
                 aria-pressed={solo === c.id}
                 onClick={() => setSolo(c.id)}
-                className={`rounded-full border px-4 py-1.5 text-sm transition-colors duration-300 ${
+                className={`min-h-11 rounded-full border px-5 py-1.5 text-sm transition-colors md:min-h-0 md:px-4 duration-300 ${
                   solo === c.id ? 'border-brand bg-brand text-ink' : 'border-white/15 text-white/70 hover:border-white/40 hover:text-white'
                 }`}
               >

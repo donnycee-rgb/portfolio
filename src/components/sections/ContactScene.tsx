@@ -167,15 +167,19 @@ export function ContactScene() {
         <ul className="grid gap-6 border-t border-ink/20 pt-8 sm:grid-cols-3">
           {[
             { label: contact.direct.email, value: site.email, href: `mailto:${site.email}` },
-            { label: contact.direct.whatsapp, value: `${site.phone} ↗`, href: `https://wa.me/${digits(site.phone)}`, external: true },
-            { label: contact.direct.phone, value: site.phone, href: `tel:+${digits(site.phone)}` },
+            ...(site.phone
+              ? [
+                  { label: contact.direct.whatsapp, value: `${site.phone} ↗`, href: `https://wa.me/${digits(site.phone)}`, external: true },
+                  { label: contact.direct.phone, value: site.phone, href: `tel:+${digits(site.phone)}` },
+                ]
+              : []),
           ].map((item) => (
             <li key={item.label}>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/60">{item.label}</p>
               <a
                 href={item.href}
                 {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="mt-1 block break-words font-display text-2xl transition-colors hover:text-paper"
+                className="mt-1 block break-words py-1.5 font-display text-2xl transition-colors hover:text-paper"
               >
                 {item.value}
               </a>

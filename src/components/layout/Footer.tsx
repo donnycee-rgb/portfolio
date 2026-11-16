@@ -55,10 +55,10 @@ export function Footer() {
 
           <nav aria-label="Footer" className="md:col-span-3">
             <h2 className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/50">{footer.explore}</h2>
-            <ul className="flex flex-col gap-2.5 text-sm">
+            <ul className="flex flex-col gap-2.5 text-sm max-md:gap-0">
               {navigation.map((item) => (
                 <li key={item.to}>
-                  <Link to={item.to} className="text-white/80 hover:text-brand">
+                  <Link to={item.to} className="text-white/80 hover:text-brand max-md:inline-flex max-md:min-h-11 max-md:items-center">
                     {item.label}
                   </Link>
                 </li>
@@ -68,15 +68,15 @@ export function Footer() {
 
           <div className="md:col-span-4">
             <h2 className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/50">{footer.contact}</h2>
-            <ul className="flex flex-col gap-2.5 text-sm text-white/80">
+            <ul className="flex flex-col gap-2.5 text-sm text-white/80 max-md:gap-0 max-md:[&>li:not(:has(a))]:py-2.5">
               <li>
-                <a href={`mailto:${site.email}`} className="hover:text-brand">
+                <a href={`mailto:${site.email}`} className="hover:text-brand max-md:inline-flex max-md:min-h-11 max-md:items-center">
                   {site.email}
                 </a>
               </li>
               {site.phone && (
                 <li>
-                  <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="hover:text-brand">
+                  <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="hover:text-brand max-md:inline-flex max-md:min-h-11 max-md:items-center">
                     {site.phone}
                   </a>
                 </li>
@@ -84,7 +84,7 @@ export function Footer() {
               <li>{site.location}</li>
               {socials.map((s) => (
                 <li key={s.platform}>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand">
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand max-md:inline-flex max-md:min-h-11 max-md:items-center">
                     {s.platform}
                   </a>
                 </li>
@@ -105,7 +105,7 @@ export function Footer() {
                 <ul className="mt-2 space-y-1">
                   {footer.creditsList.map((c) => (
                     <li key={c.url}>
-                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand">
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand max-md:inline-flex max-md:min-h-11 max-md:items-center">
                         {c.text}
                       </a>
                     </li>
@@ -123,7 +123,7 @@ export function Footer() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group inline-flex items-center gap-2 self-start font-mono uppercase tracking-[0.2em] text-white/70 hover:text-brand sm:self-auto"
+            className="group inline-flex min-h-11 items-center gap-2 self-start font-mono uppercase tracking-[0.2em] text-white/70 hover:text-brand sm:self-auto"
           >
             {/* Rewind: two triangles pointing back (up) */}
             <svg
@@ -140,7 +140,7 @@ export function Footer() {
       </Container>
 
       {/* The giant wordmark: outline always, orange fill only where the sweeping light is */}
-      <div className="px-3 pb-3 pt-6 sm:px-6 sm:pt-10">
+      <div className="px-3 pb-3 pt-6 max-md:pb-28 sm:px-6 sm:pt-10">
         <div className="wordmark wordmark-sweep relative">
           <WordmarkText className="block w-full fill-transparent stroke-white/20 [stroke-width:1]" />
           <WordmarkText className="wordmark-light absolute inset-0 block h-full w-full fill-brand" />

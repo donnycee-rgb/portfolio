@@ -53,7 +53,7 @@ export const blanks: Record<ScriptFieldName, TextBlank | SelectBlank> = {
     // Rough ranges — adjust to your pricing
     options: ['under KES 50k', 'KES 50k – 150k', 'KES 150k – 500k', 'over KES 500k', 'still open'],
   },
-  idea: { kind: 'text', label: 'The idea in a line', placeholder: 'a booking app for my salon' },
+  idea: { kind: 'text', label: 'The idea in a line', placeholder: 'a salon booking app' },
   email: { kind: 'email', label: 'Your email', placeholder: 'you@email.com', required: true },
 };
 

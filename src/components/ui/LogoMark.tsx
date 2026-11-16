@@ -25,7 +25,7 @@ interface LogoMarkProps {
 export function LogoMark({ className = '', variant = 'static', drawn = false }: LogoMarkProps) {
   const drawing = variant === 'drawing';
   const id = useId().replace(/[^a-zA-Z0-9-]/g, '');
-  const fillDelay = { transition: 'fill-opacity 500ms ease-out 1000ms' };
+  const fillDelay = { transition: 'fill-opacity 600ms ease-out 1300ms' };
 
   return (
     <svg viewBox="14 8 224 188" className={className} aria-hidden="true">
@@ -55,7 +55,7 @@ export function LogoMark({ className = '', variant = 'static', drawn = false }: 
         stroke={`url(#metal-${id})`}
         strokeWidth="5"
         strokeLinecap="square"
-        style={drawing ? { opacity: drawn ? 1 : 0, transition: 'opacity 400ms ease-out 1200ms' } : undefined}
+        style={drawing ? { opacity: drawn ? 1 : 0, transition: 'opacity 400ms ease-out 1500ms' } : undefined}
       />
 
       {/* Outline layer: traces the letters (intro), or on hover a short light dash travels the full
@@ -80,7 +80,7 @@ export function LogoMark({ className = '', variant = 'static', drawn = false }: 
             }
             style={
               drawing
-                ? { strokeDasharray: 1, strokeDashoffset: drawn ? 0 : 1, transition: 'stroke-dashoffset 1100ms cubic-bezier(0.65, 0, 0.35, 1)' }
+                ? { strokeDasharray: 1, strokeDashoffset: drawn ? 0 : 1, transition: 'stroke-dashoffset 1400ms cubic-bezier(0.65, 0, 0.35, 1)' }
                 : undefined
             }
           />

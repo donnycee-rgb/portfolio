@@ -53,7 +53,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         {/* Top bar stays put */}
         <Container className="absolute inset-x-0 top-0 pt-28">
           <div className="flex items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.2em]">
-            <Link to="/work" className="text-white/80 hover:text-brand">
+            <Link to="/work" className="-my-3 inline-flex min-h-11 items-center text-white/80 hover:text-brand">
               ← {pages.project.back}
             </Link>
             <span className="flex items-center gap-2 text-white/70 tabular-nums" aria-hidden="true">

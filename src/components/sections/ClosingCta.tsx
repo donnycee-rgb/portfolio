@@ -17,7 +17,7 @@ export function ClosingCta() {
           <Button to={cta.primary.to} variant="dark" className="!px-8 !py-4">
             {cta.primary.label}
           </Button>
-          <a href={`mailto:${site.email}`} className="font-semibold underline-offset-4 hover:underline">
+          <a href={`mailto:${site.email}`} className="font-semibold underline-offset-4 hover:underline max-md:inline-block max-md:py-3">
             {site.email}
           </a>
         </div>

@@ -1,6 +1,9 @@
 import { useEffect, type RefObject } from 'react';
 import { useReducedMotion } from './useReducedMotion';
 
+/** Below this width (Tailwind's md breakpoint) panels flow normally instead of pinning */
+const PHONE_MAX = 768;
+
 /**
  * For a stack of sticky panels: as the next panel slides over a pinned one,
  * gently scale and dim the pinned panel's content so it reads as "pushed back".
@@ -24,6 +27,11 @@ export function useStackEffect(containerRef: RefObject<HTMLElement | null>) {
     let frame = 0;
     const update = () => {
       frame = 0;
+      // Phones don't pin the panels (see StackPanel), so nothing is pushed back
+      if (window.innerWidth < PHONE_MAX) {
+        inners.forEach((el) => el && (el.style.transform = el.style.filter = ''));
+        return;
+      }
       const vh = window.innerHeight;
       panels.forEach((_panel, i) => {
         const inner = inners[i];

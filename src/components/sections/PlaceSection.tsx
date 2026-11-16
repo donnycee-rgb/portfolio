@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from '@/components/ui/TransitionLink';
 import { home } from '@/content/home';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
+import { PHONE_QUERY, useMediaQuery } from '@/hooks/useMediaQuery';
 import { StackPanel } from '@/components/ui/StackPanel';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -11,8 +12,8 @@ import { AnimatedMap } from '@/components/media/AnimatedMap';
 /**
  * "Based in Nairobi": where I work from — Africa map with Kenya, and a line-art skyline with its soundwave.
  *
- * An invisible spacer after the panel keeps it pinned for extra scroll distance. Scrolling through
- * the spacer scrubs the drawings: the map draws first, then the skyline pans in with its soundwave;
+ * An invisible spacer after the panel keeps it pinned for extra scroll distance (on phones, where
+ * nothing pins, the panel's own way into view is used instead). Scrolling through it scrubs the drawings: the map draws first, then the skyline pans in with its soundwave;
  * scrolling back up reverses it. Then the next section slides over as usual.
  * Progress reaches the drawings as the CSS variable `--draw` (0 → 1). It starts at 1 (fully drawn),
  * which is what visitors with reduced motion, or on very short screens, keep.
@@ -21,9 +22,12 @@ export function PlaceSection() {
   const { place } = home;
   const spacerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  // Phones don't pin the panel, so the drawing follows the panel itself scrolling into view instead
+  const phone = useMediaQuery(PHONE_QUERY);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const reduced = useScrollProgress(
-    spacerRef,
+    phone ? panelRef : spacerRef,
     (p) => contentRef.current?.style.setProperty('--draw', p.toFixed(4)),
     'entering',
   );
@@ -34,8 +38,10 @@ export function PlaceSection() {
         {/* --skyline-h sets the skyline strip's height; it always spans the full width (sides crop on narrow screens) */}
         <div
           ref={contentRef}
-          className="place-scrub flex h-full flex-col [--draw:1] [--skyline-h:clamp(110px,min(30vw,32svh),340px)]"
+          className="place-scrub relative flex h-full flex-col [--draw:1] [--skyline-h:clamp(110px,min(30vw,32svh),340px)]"
         >
+          {/* Phones: what the scroll progress is measured on (the whole panel) */}
+          <div ref={panelRef} aria-hidden="true" className="pointer-events-none absolute inset-0" />
           <Container className="relative grid min-h-0 flex-1 gap-6 pb-4 pt-24 md:grid-cols-2 md:grid-rows-[minmax(0,1fr)] md:items-center md:gap-12">
             {/* Map: right column on desktop, faint backdrop on phones */}
             <AnimatedMap className="pointer-events-none absolute right-[-12%] top-24 h-[44%] opacity-40 md:static md:order-2 md:h-full md:max-h-full md:min-h-0 md:justify-self-center md:opacity-100" />
@@ -46,7 +52,7 @@ export function PlaceSection() {
               <p className="mt-5 max-w-md text-white/70 sm:text-lg">{place.body}</p>
               <Link
                 to={place.link.to}
-                className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-brand"
+                className="group mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white hover:text-brand"
               >
                 {place.link.label}
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
@@ -61,8 +67,8 @@ export function PlaceSection() {
         </div>
       </StackPanel>
 
-      {/* Scroll distance for the drawing; not needed with reduced motion or on very short screens */}
-      {!reduced && <div ref={spacerRef} data-stack-spacer aria-hidden="true" className="h-[140svh] [@media(max-height:620px)]:h-0" />}
+      {/* Scroll distance for the drawing; not needed with reduced motion, on phones or on very short screens */}
+      {!reduced && !phone && <div ref={spacerRef} data-stack-spacer aria-hidden="true" className="h-[140svh] [@media(max-height:620px)]:h-0" />}
     </>
   );
 }
